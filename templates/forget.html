@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "/base.html" %}
+{% block title %}重置{% endblock%}
+{% block main %}
+<div id="main">
+    <div class="center signin">
+             <form method="post" action="{{ url_for('reset.reset_password_send') }}">
+                    <div>
+                         <label class="control-label label-center"> 请输入用户名 </label>
+                    </div>
+
+                    <div class="controls center">
+                        <input type="text" class="form-control" style="margin-bottom: 100px;" name="username">
+                    </div>
+                    <div class="form-actions button-center">
+                        <input type="submit" class="span-primary" value="重置密码">
+                    </div>
+            </form>
+    </div>
+</div>
+{% endblock %}

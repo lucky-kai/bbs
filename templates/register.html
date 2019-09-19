@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "/base.html" %}
+{% block title %}注册{% endblock%}
+{% block main %}
+<div id="main">
+    <div class="center signin">
+         <form class="form-horizontal" method="post" action="{{ url_for('.register') }}">
+                    <div class="control-group">
+                        <label class="input-group"> 用户名 </label>
+                        <div>
+                            <input type="text" class="form-control"  name="username">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="input-group"> 密码 </label>
+                        <div>
+                            <input type="password"  class="form-control" name="password">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="input-group"> 电子邮箱 </label>
+                        <div>
+                            <input type="text" class="form-control" name="email">
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="submit" class="span-primary button-center" value=" 注  册 ">
+                    </div>
+                     <div class="span-center">
+                         <a  href="{{ url_for('.signin') }}">已有帐号，直接登录</a>
+                     </div>
+                </form>
+    </div>
+</div>
+{% endblock %}
+
+
+

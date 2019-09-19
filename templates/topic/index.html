@@ -1,0 +1,105 @@
+{% extends "topic/base.html" %}
+{% block title %}论坛首页{% endblock%}
+{% block main %}
+
+<div id="main">
+    <div id="sidebar">
+        <div class="panel">
+
+    <div class="header">
+      <span class="col_fade">个人信息 ID: {{ user.id }} </span>
+    </div>
+
+    <div class="inner">
+      <div class="user_card">
+  <div>
+    <a class="user_avatar" href="{{ url_for('topic.user_index', username=user.username) }}">
+{#    <a class="user_avatar" href="{{ url_for('topic.profile', username=user.username) }}">#}
+{#      <img src="../../static/css/@luckytk%20的个人主页%20-%20CNode技术社区_files/43810527" title="luckytk">#}
+        <img src="{{ user.image }}" >
+    </a>
+{#    <span class="user_name"><a class="dark" href="{{ url_for('topic.profile', username=user.username) }}">{{ user.username }}</a></span>#}
+    <span class="user_name"><a class="dark" href="{{ url_for('topic.user_index', username=user.username) }}">{{ user.username }}</a></span>
+
+    <div class="space clearfix"></div>
+    <span class="signature">
+        “
+
+            {{ user.signature }}
+
+        ”
+    </span>
+  </div>
+      </div>
+    </div>
+
+  </div>
+
+        <div class="panel">
+            <div>
+                <a href="/topic/new?board_id={{ bid }}" class="create_topic_btn">
+                    <span class="span-success">发布话题</span>
+                </a>
+            </div>
+
+        </div>
+        <divc class="panel">
+            <div class="inner">
+                <label>最热话题</label>
+                {% for ht in hot_topic %}
+                    <div >
+                        <a class="user_avatar pull-left" href="">
+                            <img src="{{ ht.user().image }}" >
+                        </a>
+                        <a class="topic_title " style="margin-left:10px;" href="{{ url_for('topic.detail', id=ht.id) }}">{{ ht.title }}</a>
+                        <span class="last_time pull-right">
+                          <span class="last_active_time">{{ (ht.updated_time - ht.created_time) | format }} </span>
+                        </span>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </divc>
+    </div>
+    <div id="content">
+        <div class="panel">
+            <div class="header">
+                <a href="/topic" class="topic-tab current-tab">全部</a>
+                {% for b in bs %}
+                <a href="/topic?board_id={{ b.id }}"
+                   class="topic-tab current-tab ">
+                    {{ b.title }}
+                </a>
+                {% endfor %}
+            </div>
+            {% for t in ms %}
+            <div class="inner post">
+                <div class="topic_list">
+                    <div class="cell">
+                        <a class="user_avatar pull-left" href="">
+                            <img  src="{{ t.user().image }}" >
+                        </a>
+                        <span style="margin-left: 20px; margin-right: 20px;">{{ t.get_board_name(t.board_id) }} </span>
+                        <a class="topic_title " href="{{ url_for('topic.detail', id=t.id) }}">
+                            {{ t.title }}
+                        </a>
+                        <span class="last_active_time last_time pull-right">{{ (t.updated_time - t.created_time) | format }} </span>
+                        <span class="last_time pull-right">回复/点击: {{ t.replies() | count }} / {{ t.views }}</span>
+{#                        <div class="topic_title_wrapper">#}
+{#                            <!--<a class="topic_title" href="{{ url_for('topic.delete', id=t.id) }}">-->#}
+{#                            <a class="topic_title" href="{{ url_for('topic.delete', id=t.id, token=token) }}">#}
+{#                                删除#}
+{#                            </a>#}
+{##}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!--</body>-->
+<!--</html>-->

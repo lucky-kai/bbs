@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% extends "/topic/base.html" %}
+{% block title %}站内信{% endblock%}
+{% block main %}
+
+<div id="main">
+
+    <div id="sidebar">
+
+      <div class="panel">
+
+        <div class="header">
+          <span class="col_fade">个人信息 ID: {{ user.id }} </span>
+        </div>
+
+        <div class="inner">
+          <div class="user_card">
+      <div>
+        <a class="user_avatar" href="{{ url_for('topic.user_index', username=user.username) }}">
+    {#    <a class="user_avatar" href="{{ url_for('topic.profile', username=u.username) }}">#}
+    {#      <img src="../../static/css/@luckytk%20的个人主页%20-%20CNode技术社区_files/43810527" title="luckytk">#}
+            <img src="{{ user.image }}" >
+        </a>
+        <span class="user_name"><a class="dark" href="{{ url_for('topic.user_index', username=user.username) }}">{{ user.username }}</a></span>
+    {#    <span class="user_name"><a class="dark" href="{{ url_for('topic.profile', username=u.username) }}">{{ u.username }}</a></span>#}
+
+        <div class="space clearfix"></div>
+        <span class="signature">
+            “
+
+                {{ user.signature }}
+
+            ”
+        </span>
+      </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel">
+    <div>
+        <a href="/topic/new?board_id={{ bid }}" class="create_topic_btn">
+            <span class="span-success">发布话题</span>
+        </a>
+    </div>
+  </div>
+    </div>
+    <div id="content">
+        <div class="panel">
+            <div class="header">
+              <ul class="breadcrumb">
+                <li><a href="{{ url_for('topic.user_index', username=user.username) }}">主页</a><span class="divider">/</span></li>
+                <li class="active">信件内容</li>
+              </ul>
+            </div>
+            <div class="inner">
+                <label class="control-label" style="font-size: 25px"> 标题: {{ message.title }}</label>
+                <label class="control-label"> 发件人: {{ message.sender().username }} <{{ message.sender().email }}> </label>
+                <label class="control-label"> 时间: {{ message.created_time | format_time }} </label>
+                <label class="control-label"> 收件人: {{ message.receiver().username }} <{{ message.receiver().email }}></label>
+                <label class="control-label"> 内容:</label>
+                <br>
+                <label class="control-label">{{ message.content }}</label>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+

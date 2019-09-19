@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "/base.html" %}
+{% block title %}重置{% endblock%}
+{% block main %}
+<div id="main">
+    <div class="center signin">
+    <form class="form-horizontal" method="post" action="{{ url_for('reset.reset_password_update') }}">
+        <div class="control-group">
+            <label class="label-center">请输入新密码</label>
+            <div class="input-group center">
+                <input type="text" style="margin-bottom: 100px;" class="form-control" name="password">
+            </div>
+            <div>
+                <input class="input-xlarge " name="username" value="{{ username }}" type="hidden">
+            </div>
+        </div>
+        <div class="form-actions">
+            <input type="submit" class="span-primary button-center" value="确认">
+        </div>
+    </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+/*center*/
+.center-block {
+    margin: 0 auto;
+}
+
+.center-inline {
+    text-align: center;
+}
+
+.vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+.button-center {
+    position: absolute;
+     top: 80%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+.span-center {
+    position: absolute;
+     top: 90%;
+    left: 44%;
+    transform: translateY(-50%) translateX(-50%);
+}
+.label-center {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+/*login*/
+.signin {
+    width: 300px;
+    height: 360px;
+    padding: 30px;
+    border: 3px  solid #d9edf7;
+    border-radius: 10px;
+}
+
+.login-btn {
+    width: 274px;
+    height: 34px;
+}
+
+.blue {
+    border-color: #d9edf7;
+    background-color: #d9edf7;
+}
+
+.font-blue {
+    color: #31708f;
+}
+
+.nav>li>a:hover {
+    background-color: #d9edf7;
+    text-decoration: none;
+}
+

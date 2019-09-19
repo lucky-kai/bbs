@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends "/base.html" %}
+{% block title %}登录{% endblock%}
+{% block main %}
+<div id="main">
+    <div class="center signin">
+        <form action="/login" method="post">
+                <div class="input-group">
+                    <label>用户名</label>
+                  <input type="text" class="form-control" placeholder="Username" name="username" value="test">
+                </div>
+
+                <br>
+
+                <div class="input-group">
+                    <label>密码</label>
+                  <input type="password" class="form-control" placeholder="password" name="password" value="123">
+                </div>
+                <br>
+            <div class="span-center">
+                <a href="/signup">注册新用户</a>
+            </div>
+
+            <a href="{{ url_for('reset.forget') }}">忘记密码了？</a>
+                <div class="form-actions">
+                    <input type="submit" class="span-primary " value=" 登  录 " >
+                </div>
+            </form>
+    </div>
+{#    <div id="content">#}
+{#        <div class="panel">#}
+{#            <div class="inner">#}
+{#                <form class="form-horizontal" method="post" action="{{ url_for('.login') }}">#}
+{#                    <div class="control-group">#}
+{#                        <label class="control-label"> 用户名 </label>#}
+{#                        <div class="controls">#}
+{#                            <input type="text" class="input-xlarge" name="username" value="test">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="control-group">#}
+{#                        <label class="control-label"> 密码 </label>#}
+{#                        <div class="controls">#}
+{#                            <input type="password" class="input-xlarge" name="password" value="123">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-actions">#}
+{#                        <input type="submit" class="span-primary" value=" 登  录 ">#}
+{#                         <a href="/forget">忘记密码了？</a>#}
+{#                    </div>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+</div>
+{% endblock %}

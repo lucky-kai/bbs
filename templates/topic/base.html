@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="shortcut icon" href="/images/4.jpg" type="image/x-icon" />
+<head>
+<body>
+
+<!-- navbar -->
+<div class='navbar' style="position:fixed;top: 0">
+  <div class='navbar-inner'>
+    <div class='container'>
+      <ul class='nav pull-left' >
+
+        <li><a style="font-size: 25px" href='{{ url_for('topic.index') }}'> LUCKYK.CLUB </a></li>
+
+        <li><a style="margin-left: 100px" href='{{ url_for('topic.index') }}'> 论坛首页 </a></li>
+
+        <li><a href='{{ url_for('topic.user_index', username=user.username) }}'> 个人主页 </a></li>
+
+        <li><a href='{{ url_for('setting.index') }}'> 用户设置 </a></li>
+
+        <li><a href="/message" > 站内信 </a></li>
+
+        <li><a href='/signin'> 切换用户 </a></li>
+
+      </ul>
+      <a class="btn btn-navbar" id="responsive-sidebar-trigger">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+  </div>
+</div>
+<div style="padding-top: 50px"></div>
+{% block main %}
+{% endblock %}
+
+
+{#<footer style=" text-align: center; padding-top: 50px; padding-bottom: 50px">#}
+{#     <a href="http://www.beian.miit.gov.cn/">陕ICP备19017840号</a>#}
+{#</footer>#}
+<div id='bottomDiv' style='postion:relative; padding-top: 50px; padding-bottom: 50px; float:left; width:100%; text-align: center;'>
+    <a href="http://www.beian.miit.gov.cn/">ICP备案: 陕ICP备19017840号</a>
+</div>
+</body>

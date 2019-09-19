@@ -1,0 +1,159 @@
+{% extends "topic/base.html" %}
+{% block title %}个人主页{% endblock%}
+{% block main %}
+
+<div id="main">
+  <div id="sidebar">
+
+  <div class="panel">
+    
+    <div class="header">
+      <span class="col_fade">个人信息 ID: {{ author.id }} </span>
+    </div>
+
+    <div class="inner">
+      <div class="user_card">
+  <div>
+    <a class="user_avatar" href="{{ url_for('topic.user_index', username=author.username) }}">
+{#    <a class="user_avatar" href="{{ url_for('topic.profile', username=u.username) }}">#}
+{#      <img src="../../static/css/@luckytk%20的个人主页%20-%20CNode技术社区_files/43810527" title="luckytk">#}
+        <img src="{{ author.image }}" >
+    </a>
+    <span class="user_name"><a class="dark" href="{{ url_for('topic.user_index', username=author.username) }}">{{ author.username }}</a></span>
+{#    <span class="user_name"><a class="dark" href="{{ url_for('topic.profile', username=u.username) }}">{{ u.username }}</a></span>#}
+
+    <div class="space clearfix"></div>
+    <span class="signature">
+        “
+        
+            {{ author.signature }}
+        
+        ”
+    </span>
+  </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="panel">
+{#    <div class="inner">#}
+{#        <a href="/topic/new?board_id={{ bid }}" class="create_topic_btn">#}
+{#            <span class="span-success">发布话题</span>#}
+{#        </a>#}
+{#    </div>#}
+  </div>
+</div>
+
+
+<div id="content">
+    <div class="panel">
+    <div class="header">
+      <ul class="breadcrumb">
+        <li><a href="{{ url_for('topic.index', username=author.username) }}">主页</a><span class="divider">/</span></li>
+{#        <li><a href="{{ url_for('gua_topic.index') }}">主页</a><span class="divider">/</span></li>#}
+      </ul>
+    </div>
+{#    <div class="inner userinfo">#}
+{#      <div class="user_big_avatar">#}
+{#        <img src="../../static/css/@luckytk%20的个人主页%20-%20CNode技术社区_files/43810527" class="user_avatar" title="luckytk">#}
+{#          <img src="{{ user.image }}" >#}
+{#      </div>#}
+{#      <a class="dark">{{ user.username }}</a>#}
+{##}
+{#      <div class="user_profile">#}
+{#        <ul class="unstyled">#}
+{#          <span class="big">10</span> 积分#}
+{##}
+{#          <li>#}
+{#            <i class="fa fa-lg fa-fw fa-github"></i>#}
+{#            <a class="dark" href="" target="_blank">#}
+{#              @{{ user.username }}#}
+{#            </a>#}
+{#          </li>#}
+{#          #}
+{#          #}
+{#        </ul>#}
+{#      </div>#}
+{#      <p class="col_fade">注册时间 12 小时前</p>#}
+{#      #}
+{#    </div>#}
+</div>
+
+    <div class="panel">
+    <div class="header">
+      <span class="col_fade">最近创建的话题</span>
+    </div>
+    
+    <div class="cell">
+
+    <div class="topic_list">
+        {% for t in current_user_topics %}
+        <div class="cell">
+            <div class="topic_title_wrapper">
+                <span style="margin-left: 20px;margin-right: 20px;"> 回复/点击: {{ t.replies() | count }} / {{ t.views }}</span>
+                <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
+                    {{ t.title }}
+                </a>
+{#                 count(t.replies())#}
+{#                                 <span>{{ t.reply_count() }} / {{ t.views }}</span>#}
+{#                len(Reply.all(topic_id=t.id))#}
+                <a class="user_avatar pull-left" href="">
+{#                    <img src="../../static/css/@luckytk%20的个人主页%20-%20CNode技术社区_files/43810527" title="luckytk">#}
+                        <img src="{{ author.image }}" >
+                </a>
+
+                <span class="last_time pull-right">
+                  <span class="last_active_time">{{ (t.updated_time - t.created_time) | format }} </span>
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+    <div class="panel">
+    <div class="header">
+      <span class="col_fade">最近参与的话题</span>
+    </div>
+    
+    <div class="cell">
+
+        <div class="topic_list">
+            {% for t in replies_topics %}
+            <div class="cell">
+                <div class="topic_title_wrapper">
+                    <span style="margin-left: 20px;margin-right: 20px;"> 回复/点击: {{ t.replies() | count }} / {{ t.views }}</span>
+                    <a class="topic_title" href="{{ url_for('topic.detail', id=t.id) }}">
+                        {{ t.title }}
+                    </a>
+{#                     count(t.replies())#}
+{#                                 <span>{{ t.reply_count() }} / {{ t.views }}</span>#}
+{#                    len(Reply.all(topic_id=t.id))#}
+{#                </div>#}
+{#            </div>#}
+
+              <a class="user_avatar pull-left" href="">
+{#                <img src="../../static/css/@luckytk%20的个人主页%20-%20CNode技术社区_files/5671593" title="HuangChen1989">#}
+                <img src="{{ author.image }}" >
+              </a>
+
+              <a class="last_time pull-right" href="">
+{#                <img class="user_small_avatar" src="../../static/css/@luckytk%20的个人主页%20-%20CNode技术社区_files/43810527">#}
+                <img class="user_small_avatar" src="{{ author.image }}">
+    {#            <span class="last_active_time">{{ (current_time - t.created_time) | formatted_time}}</span>#}
+{#                <span class="last_active_time">{{ ( t.updated_time - t.created_time) | format }}</span>#}
+              </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}
+
