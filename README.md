@@ -1,6 +1,6 @@
 # bbs  Flask 论坛项目 
 
-## 论坛地址：https://luckyk.club/
+## 论坛地址：https://luckyk.club/      测试账号： 用户名：test  密码：123
 
 ## 技术栈
 ### Nginx + Gunicorn + Gevent + Flask + MySQL + SQLalchemy + Jinja2 + Redis + Celery
